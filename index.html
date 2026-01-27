@@ -1,110 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>For You ❤️</title>
-  <style>
-    * { box-sizing: border-box; margin:0; padding:0; }
-    body {
-      font-family: 'Poppins', 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #ffd6e8, #e0c3ff);
-      min-height: 100vh;
-      overflow-x: hidden;
-      color: #4a235a;
-    }
-
-    header { text-align:center; padding:80px 20px 40px; }
-    header h1 { font-size: clamp(2.2rem,5vw,3rem); margin-bottom:10px; animation: popIn 1s ease-out; }
-    header p { font-size: clamp(1rem,3.5vw,1.2rem); opacity:0.9; }
-    @keyframes popIn {0%{transform:scale(0.7);opacity:0;}100%{transform:scale(1);opacity:1;}}
-
-    .container { max-width:1000px; margin:auto; padding:20px; display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap:24px; }
-
-    .card {
-      background: rgba(255,255,255,0.85);
-      border-radius: 20px;
-      padding:25px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.12);
-      text-align:center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      position: relative; overflow:hidden;
-    }
-    .card:hover { transform:translateY(-8px) scale(1.02); box-shadow:0 20px 35px rgba(0,0,0,0.18); }
-    .card h2 { margin-top:0; font-size:clamp(1.2rem,4vw,1.5rem); }
-
-    .btn { margin-top:15px; padding:10px 18px; border:none; border-radius:999px;
-           background: linear-gradient(135deg, #ff6fae, #9b5de5); color:white;
-           font-size:0.95rem; cursor:pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; }
-    .btn:hover { transform: scale(1.05); box-shadow:0 6px 15px rgba(0,0,0,0.2); }
-
-    .hidden-msg { margin-top:15px; max-height:0; overflow:hidden; opacity:0; transition:max-height 0.5s ease, opacity 0.4s ease; }
-    .hidden-msg.show { max-height:1000px; opacity:1; }
-
-    .letter.show { overflow-y:auto; padding-right:10px; max-height:400px; text-align:left; line-height:1.7; }
-    .letter::-webkit-scrollbar { width:6px; }
-    .letter::-webkit-scrollbar-thumb { background:#d48cff; border-radius:10px; }
-    .letter::-webkit-scrollbar-track { background:transparent; }
-
-    footer { text-align:center; padding:40px 20px 60px; font-size:0.95rem; opacity:0.85; }
-    .bounce { display:inline-block; animation:bounce 1.5s infinite; }
-    @keyframes bounce { 0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);} }
-
-    /* Floating hearts */
-    .heart {
-      position: fixed;
-      bottom: -20px;
-      font-size: 20px;
-      animation: floatUp 8s linear infinite;
-      opacity: 0.7;
-    }
-    @keyframes floatUp {
-      0% { transform: translateY(0) scale(1); opacity: 0; }
-      10% { opacity: 0.7; }
-      100% { transform: translateY(-110vh) scale(1.5); opacity: 0; }
-    }
-  </style>
-</head>
-<body>
-
-  <header>
-    <h1>Hey Love <span class="bounce">💖</span></h1>
-    <p>Before you read anything else… answer this first 💌</p>
-  </header>
-
-  <!-- Interactive question first -->
-<section class="container">
-  <div class="card" style="grid-column:1/-1; text-align:center; padding:60px; position:relative;">
-    <p style="font-size:1.2rem; font-weight:600; margin-bottom:20px;">Will you always be mine? 💖</p>
-
-    <!-- Glowing, sparkling Yes button -->
-    <button class="btn yes-btn magical-btn">Yes</button>
-    <button class="btn no-btn">No</button>
-
-    <!-- Sparkle effect -->
-    <div class="sparkles" style="pointer-events:none;"></div>
-
-    <p class="secret-msg" style="display:none; margin-top:20px; font-weight:600; color:#ff6fae; font-size:1rem;">
-      Yay! You said yes! ❤️ Now let’s continue…
-    </p>
-  </div>
-</section>
-
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>For You ❤️</title>
 <style>
-  /* Magical glowing Yes button */
+  * { box-sizing: border-box; margin:0; padding:0; }
+  body {
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #ffd6e8, #e0c3ff);
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: #4a235a;
+  }
+  header { text-align:center; padding:60px 20px 40px; }
+  header h1 { font-size: clamp(2.2rem,5vw,3rem); margin-bottom:10px; animation: popIn 1s ease-out; }
+  header p { font-size: clamp(1rem,3.5vw,1.2rem); opacity:0.9; }
+  @keyframes popIn {0%{transform:scale(0.7);opacity:0;}100%{transform:scale(1);opacity:1;}}
+  .container { max-width:1000px; margin:auto; padding:20px; display:grid; gap:24px; }
+
+  .card {
+    background: rgba(255,255,255,0.85);
+    border-radius: 20px;
+    padding:25px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+    text-align:center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative; overflow:hidden;
+  }
+  .card:hover { transform:translateY(-8px) scale(1.02); box-shadow:0 20px 35px rgba(0,0,0,0.18); }
+  .card h2 { margin-top:0; font-size:clamp(1.2rem,4vw,1.5rem); }
+
+  .btn { margin-top:15px; padding:12px 22px; border:none; border-radius:999px;
+         background: linear-gradient(135deg, #ff6fae, #9b5de5); color:white;
+         font-size:1rem; cursor:pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+  .btn:hover { transform: scale(1.05); box-shadow:0 6px 15px rgba(0,0,0,0.2); }
+
+  .hidden-msg { margin-top:15px; max-height:0; overflow:hidden; opacity:0; transition:max-height 0.5s ease, opacity 0.4s ease; }
+  .hidden-msg.show { max-height:1000px; opacity:1; }
+
+  .letter.show { overflow-y:auto; padding-right:10px; max-height:400px; text-align:left; line-height:1.7; }
+  .letter::-webkit-scrollbar { width:6px; }
+  .letter::-webkit-scrollbar-thumb { background:#d48cff; border-radius:10px; }
+  .letter::-webkit-scrollbar-track { background:transparent; }
+
+  footer { text-align:center; padding:40px 20px 60px; font-size:0.95rem; opacity:0.85; }
+  .bounce { display:inline-block; animation:bounce 1.5s infinite; }
+  @keyframes bounce { 0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);} }
+
+  /* Floating hearts */
+  .heart {
+    position: fixed;
+    bottom: -20px;
+    font-size: 20px;
+    animation: floatUp 8s linear infinite;
+    opacity: 0.7;
+  }
+  @keyframes floatUp {
+    0% { transform: translateY(0) scale(1); opacity: 0; }
+    10% { opacity: 0.7; }
+    100% { transform: translateY(-110vh) scale(1.5); opacity: 0; }
+  }
+
+  /* Magical Yes button */
   .magical-btn {
     position: relative;
     z-index: 1;
     animation: pulseGlow 1.5s infinite;
   }
-
   @keyframes pulseGlow {
     0% { box-shadow: 0 0 8px #ff6fae, 0 0 12px #ff6fae50; transform: scale(1); }
     50% { box-shadow: 0 0 16px #ff6fae, 0 0 24px #ff6fae70; transform: scale(1.05); }
     100% { box-shadow: 0 0 8px #ff6fae, 0 0 12px #ff6fae50; transform: scale(1); }
   }
 
-  /* Optional sparkles around Yes button */
   .sparkles {
     position: absolute;
     top: 50%;
@@ -117,31 +86,173 @@
     animation: sparkleAnim 1.2s linear infinite;
     opacity: 0.6;
   }
-
   @keyframes sparkleAnim {
     0% { transform: translate(-50%, -50%) rotate(0deg); opacity:0.6; }
     50% { transform: translate(-50%, -50%) rotate(180deg); opacity:1; }
     100% { transform: translate(-50%, -50%) rotate(360deg); opacity:0.6; }
   }
+
+  /* Mobile tweaks */
+  @media (max-width:800px){
+    .yes-btn, .no-btn { display:block; width:80%; margin:10px auto; }
+    .card { padding:30px 20px; min-height:180px; }
+  }
+  @media (max-width:500px){
+    header h1 { font-size:2rem; }
+    header p { font-size:1rem; }
+    .card { padding:25px 15px; min-height:160px; }
+    .btn { padding:10px 18px; font-size:0.95rem; }
+  }
 </style>
+</head>
+<body>
+
+<header>
+  <h1>Hey Love <span class="bounce">💖</span></h1>
+  <p>Before you read anything else… answer this first 💌</p>
+</header>
+
+<!-- Interactive question -->
+<section class="container">
+  <div class="card" style="grid-column:1/-1; text-align:center; padding:60px; position:relative;">
+    <p style="font-size:1.2rem; font-weight:600; margin-bottom:20px;">Will you always be mine? 💖</p>
+    <button class="btn yes-btn magical-btn">Yes</button>
+    <button class="btn no-btn">No</button>
+    <div class="sparkles"></div>
+    <p class="secret-msg" style="display:none; margin-top:20px; font-weight:600; color:#ff6fae; font-size:1rem;">
+      Yay! You said yes! ❤️ Now let’s continue…
+    </p>
+  </div>
+</section>
+
+<!-- Hidden letters/cards -->
+<section class="container cards-container" style="display:none; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap:24px;">
+  <!-- Birthday Letter -->
+  <div class="card" style="grid-column:1/-1;">
+    <h2>Happy 22nd Birthday, My Love 🎂💖</h2>
+    <p>This one is special. Take your time reading it…</p>
+    <button class="btn" onclick="toggleMsg(this)">Open Letter</button>
+    <div class="hidden-msg letter" style="margin-top:10px;">
+      <p>Happy 22nd birthday, my love! Today is all about you, and I hope you feel how much you are cherished and adored. Every moment with you has been a gift, and I want you to know that my heart is so full of gratitude for having you in my life.</p>
+      <p>From our quiet evenings just talking to the endless laughter during our adventures, every memory we’ve shared is a treasure I will hold forever. You bring so much light, warmth, and joy into my world, and your presence makes everything feel brighter and more beautiful.</p>
+      <p>I admire the way you face life with courage and kindness. Your strength inspires me, your laughter lifts me, and your love makes me feel complete. I am in awe of the person you are becoming, and I feel so proud to walk beside you through every step of life.</p>
+      <p>Life may not always be perfect, and there will be moments when things feel uncertain or challenging. But please know this — whatever comes our way, I will always be by your side. You will never face anything alone, because I choose you, every day, in every way.</p>
+      <p>As you turn 22, I wish for your heart to overflow with happiness, for your dreams to grow bigger than you ever imagined, and for your days to be filled with laughter, love, and little moments that make life magical. Keep believing in yourself, keep chasing what makes you shine, and always remember how deeply you are loved.</p>
+      <p>Thank you for being you — for your warmth, your compassion, your humor, and your love. Thank you for letting me be part of your life, and for letting me love you in return. There is no greater joy than seeing you happy and knowing I can be there for you through it all.</p>
+      <p>Every day with you is a blessing, and I look forward to making countless more memories together. From the smallest shared smiles to the biggest adventures, I want to experience every moment of life with you. You are my heart, my safe haven, and my favorite person in the world.</p>
+      <p>So here’s to you on your special day: may it be filled with love, laughter, surprises, and all the things that make your heart sing. You deserve the world, and I hope this year brings you everything you’ve ever wished for and more.</p>
+      <p style="margin-top:25px;"><strong>With all my love,</strong><br/>Your always 🤍</p>
+    </div>
+  </div>
+
+  <!-- Other cards -->
+  <div class="card">
+    <h2>Why I Love You 💕</h2>
+    <p>Click to reveal a secret.</p>
+    <button class="btn" onclick="toggleMsg(this)">Open</button>
+    <div class="hidden-msg">
+      <p>You make me feel safe, loved, and happy in ways I never imagined. Every day with you is my favorite day.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Our Little Moments ✨</h2>
+    <p>A few things I adore about us.</p>
+    <button class="btn" onclick="toggleMsg(this)">Reveal</button>
+    <div class="hidden-msg">
+      <ul style="list-style:none;padding:0;">
+        <li>🌸 Our late-night talks</li>
+        <li>😂 Your laugh</li>
+        <li>🤍 The way you care</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>For You 💌</h2>
+    <p>A message straight from my heart.</p>
+    <button class="btn" onclick="toggleMsg(this)">Read</button>
+    <div class="hidden-msg">
+      <p>No matter where life takes us, I hope you always remember how special you are to me. I choose you—always.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>One Last Thing 🌙</h2>
+    <p>Promise me something?</p>
+    <button class="btn" onclick="toggleMsg(this)">Okay</button>
+    <div class="hidden-msg">
+      <p>Keep smiling, keep dreaming, and never forget that someone out here loves you more than words can say.</p>
+    </div>
+  </div>
+
+  <div class="card" style="grid-column:1/-1; display:flex; flex-direction:column; align-items:center;">
+    <h2>A Little Video for You 🎥💞</h2>
+    <p>I wanted you to see this too.</p>
+    <button class="btn" onclick="toggleVideo(this)">Play / Hide Video</button>
+    <div style="margin-top:15px; width:100%; max-width:420px;">
+      <video id="loveVideo" controls playsinline 
+             style="width:100%; aspect-ratio:9/16; object-fit:cover; border-radius:20px; box-shadow:0 10px 25px rgba(0,0,0,0.15); display:none;">
+        <source src="vid.mp4" type="video/mp4">
+        Sorry, your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Made with ❤️ just for you.
+</footer>
 
 <script>
-  // No button dodge
+  // Toggle messages
+  function toggleMsg(btn){
+    const msg=btn.nextElementSibling;
+    msg.classList.toggle('show');
+  }
+
+  // Toggle video
+  function toggleVideo(btn){
+    const container = btn.nextElementSibling;
+    const video = container.querySelector('video');
+    if(video.style.display === 'block'){
+      video.pause();
+      video.style.display = 'none';
+    } else {
+      video.style.display = 'block';
+      video.play();
+    }
+  }
+
+  // Floating hearts
+  setInterval(()=>{
+    const heart=document.createElement('div');
+    heart.className='heart';
+    heart.innerHTML=`<img src='https://em-content.zobj.net/thumbs/240/apple/354/red-heart_2764-fe0f.png' style='width:22px;height:22px;'>`;
+    heart.style.left=Math.random()*100+'vw';
+    heart.style.animationDuration=6+Math.random()*6+'s';
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),12000);
+  },500);
+
+  // Yes/No button interaction
   const noBtn = document.querySelector('.no-btn');
   const yesBtn = document.querySelector('.yes-btn');
   const secretMsg = document.querySelector('.secret-msg');
   const cardsContainer = document.querySelector('.cards-container');
 
-  noBtn.addEventListener('mouseover', () => {
+  function moveNoButton() {
     const parent = noBtn.parentElement;
     const x = Math.random() * (parent.offsetWidth - noBtn.offsetWidth);
     const y = Math.random() * (parent.offsetHeight - noBtn.offsetHeight - 30);
     noBtn.style.position = 'absolute';
     noBtn.style.left = x + 'px';
     noBtn.style.top = y + 'px';
-  });
+  }
 
-  // Yes button reveals secret message and unlocks cards
+  noBtn.addEventListener('mouseover', moveNoButton);
+  noBtn.addEventListener('touchstart', moveNoButton);
+
   yesBtn.addEventListener('click', () => {
     secretMsg.style.display = 'block';
     yesBtn.disabled = true;
@@ -150,146 +261,5 @@
   });
 </script>
 
-
-  <!-- Hidden letters/cards initially -->
-  <section class="container cards-container" style="display:none;">
-
-    <!-- Birthday Letter Card -->
-    <div class="card" style="grid-column:1/-1;">
-      <h2>Happy 22nd Birthday, My Love 🎂💖</h2>
-      <p>This one is special. Take your time reading it…</p>
-      <button class="btn" onclick="toggleMsg(this)">Open Letter</button>
-      <div class="hidden-msg letter" style="margin-top:10px;">
-
-        <p>Happy 22nd birthday, my love! Today is all about you, and I hope you feel how much you are cherished and adored. Every moment with you has been a gift, and I want you to know that my heart is so full of gratitude for having you in my life.</p>
-
-        <p>From our quiet evenings just talking to the endless laughter during our adventures, every memory we’ve shared is a treasure I will hold forever. You bring so much light, warmth, and joy into my world, and your presence makes everything feel brighter and more beautiful.</p>
-
-        <p>I admire the way you face life with courage and kindness. Your strength inspires me, your laughter lifts me, and your love makes me feel complete. I am in awe of the person you are becoming, and I feel so proud to walk beside you through every step of life.</p>
-
-        <p>Life may not always be perfect, and there will be moments when things feel uncertain or challenging. But please know this — whatever comes our way, I will always be by your side. You will never face anything alone, because I choose you, every day, in every way.</p>
-
-        <p>As you turn 22, I wish for your heart to overflow with happiness, for your dreams to grow bigger than you ever imagined, and for your days to be filled with laughter, love, and little moments that make life magical. Keep believing in yourself, keep chasing what makes you shine, and always remember how deeply you are loved.</p>
-
-        <p>Thank you for being you — for your warmth, your compassion, your humor, and your love. Thank you for letting me be part of your life, and for letting me love you in return. There is no greater joy than seeing you happy and knowing I can be there for you through it all.</p>
-
-        <p>Every day with you is a blessing, and I look forward to making countless more memories together. From the smallest shared smiles to the biggest adventures, I want to experience every moment of life with you. You are my heart, my safe haven, and my favorite person in the world.</p>
-
-        <p>So here’s to you on your special day: may it be filled with love, laughter, surprises, and all the things that make your heart sing. You deserve the world, and I hope this year brings you everything you’ve ever wished for and more.</p>
-
-        <p style="margin-top:25px;"><strong>With all my love,</strong><br/>Your always 🤍</p>
-      </div>
-    </div>
-
-    <!-- Other message cards -->
-    <div class="card">
-      <h2>Why I Love You 💕</h2>
-      <p>Click to reveal a secret.</p>
-      <button class="btn" onclick="toggleMsg(this)">Open</button>
-      <div class="hidden-msg">
-        <p>You make me feel safe, loved, and happy in ways I never imagined. Every day with you is my favorite day.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <h2>Our Little Moments ✨</h2>
-      <p>A few things I adore about us.</p>
-      <button class="btn" onclick="toggleMsg(this)">Reveal</button>
-      <div class="hidden-msg">
-        <ul style="list-style:none;padding:0;">
-          <li>🌸 Our late-night talks</li>
-          <li>😂 Your laugh</li>
-          <li>🤍 The way you care</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="card">
-      <h2>For You 💌</h2>
-      <p>A message straight from my heart.</p>
-      <button class="btn" onclick="toggleMsg(this)">Read</button>
-      <div class="hidden-msg">
-        <p>No matter where life takes us, I hope you always remember how special you are to me. I choose you—always.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <h2>One Last Thing 🌙</h2>
-      <p>Promise me something?</p>
-      <button class="btn" onclick="toggleMsg(this)">Okay</button>
-      <div class="hidden-msg">
-        <p>Keep smiling, keep dreaming, and never forget that someone out here loves you more than words can say.</p>
-      </div>
-    </div>
-
-    <!-- Video Surprise -->
-    <div class="card" style="grid-column:1/-1; display:flex; flex-direction:column; align-items:center;">
-      <h2>A Little Video for You 🎥💞</h2>
-      <p>I wanted you to see this too.</p>
-      <button class="btn" onclick="toggleVideo(this)">Play / Hide Video</button>
-      <div style="margin-top:15px; width:100%; max-width:420px;">
-        <video id="loveVideo" controls playsinline 
-               style="width:100%; aspect-ratio:9/16; object-fit:cover; border-radius:20px; box-shadow:0 10px 25px rgba(0,0,0,0.15); display:none;">
-          <source src="vid.mp4" type="video/mp4">
-          Sorry, your browser does not support the video tag.
-        </video>
-      </div>
-    </div>
-
-  </section>
-
-  <footer>
-    Made with ❤️ just for you.
-  </footer>
-
-  <script>
-    // Toggle letter/message
-    function toggleMsg(btn){
-      const msg=btn.nextElementSibling;
-      msg.classList.toggle('show');
-    }
-
-    // Video toggle
-    function toggleVideo(btn){
-      const container = btn.nextElementSibling;
-      const video = container.querySelector('video');
-      if(video.style.display === 'block'){
-        video.pause();
-        video.style.display = 'none';
-      } else {
-        video.style.display = 'block';
-        video.play();
-      }
-    }
-
-    // Floating hearts
-    setInterval(()=>{
-      const heart=document.createElement('div');
-      heart.className='heart';
-      heart.innerHTML=`<img src='https://em-content.zobj.net/thumbs/240/apple/354/red-heart_2764-fe0f.png' style='width:22px;height:22px;'>`;
-      heart.style.left=Math.random()*100+'vw';
-      heart.style.animationDuration=6+Math.random()*6+'s';
-      document.body.appendChild(heart);
-      setTimeout(()=>heart.remove(),12000);
-    },500);
-
-  
-
-    noBtn.addEventListener('mouseover', () => {
-      const parent = noBtn.parentElement;
-      const x = Math.random() * (parent.offsetWidth - noBtn.offsetWidth);
-      const y = Math.random() * (parent.offsetHeight - noBtn.offsetHeight - 30);
-      noBtn.style.position = 'absolute';
-      noBtn.style.left = x + 'px';
-      noBtn.style.top = y + 'px';
-    });
-
-    yesBtn.addEventListener('click', () => {
-      secretMsg.style.display = 'block';
-      yesBtn.disabled = true;
-      noBtn.disabled = true;
-      cardsContainer.style.display = 'grid';
-    });
-  </script>
 </body>
 </html>
