@@ -34,14 +34,54 @@
   .card h2 { margin-top:0; font-size:clamp(1.2rem,4vw,1.5rem); }
 
   .btn {
-    margin-top:15px; padding:12px 22px; border:none; border-radius:999px;
-    background: linear-gradient(135deg, #ff6fae, #9b5de5); color:white;
-    font-size:1rem; cursor:pointer; transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  .btn:hover { transform: scale(1.05); box-shadow:0 6px 15px rgba(0,0,0,0.2); }
+    margin-top:10px;          /* slightly smaller spacing */
+    padding:8px 16px;         /* smaller padding */
+    border:none;
+    border-radius:999px;
+    background: linear-gradient(135deg, #ff6fae, #9b5de5);
+    color:white;
+    font-size:0.85rem;        /* smaller font */
+    cursor:pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
 
-  .hidden-msg { margin-top:15px; max-height:0; overflow:hidden; opacity:0; transition:max-height 0.5s ease, opacity 0.4s ease; }
-  .hidden-msg.show { max-height:2000px; opacity:1; }
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow:0 6px 15px rgba(0,0,0,0.2);
+}
+
+  .hidden-msg { 
+  margin-top:15px; 
+  max-height:0; 
+  overflow:hidden; 
+  opacity:0; 
+  transition:max-height 0.5s ease, opacity 0.4s ease; 
+
+  /* Parchment-style background */
+  background: #fff8e7; /* base parchment color */
+  background-image: 
+    radial-gradient(rgba(0,0,0,0.02) 1px, transparent 1px),
+    radial-gradient(rgba(0,0,0,0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,235,200,0.15), rgba(255,235,200,0));
+  background-size: 20px 20px, 20px 20px, 100% 100%;
+  background-position: 0 0, 10px 10px, 0 0;
+
+  /* Border & shadow for aged effect */
+  border: 1px solid rgba(150, 111, 51, 0.3); /* faint brown border */
+  border-radius: 15px;
+  box-shadow: inset 0 0 20px rgba(150, 111, 51, 0.1), 0 5px 20px rgba(0,0,0,0.05);
+
+  padding:25px; 
+  text-align:left;
+  line-height:1.7;
+  font-family: 'Georgia', 'Palatino Linotype', serif;
+  font-size: 1rem;
+
+  /* Optional subtle crease / wrinkled effect */
+  background-blend-mode: multiply;
+}
+
+.hidden-msg.show { max-height:1200px; opacity:1; }
 
   .letter.show { overflow-y:auto; padding-right:10px; max-height:500px; text-align:left; line-height:1.7; }
   .letter::-webkit-scrollbar { width:6px; }
@@ -66,12 +106,64 @@
     100% { transform: translateY(-110vh) scale(1.5); opacity: 0; }
   }
 
-  /* Magical Yes button */
-  .magical-btn {
-    position: relative;
-    z-index: 1;
-    animation: pulseGlow 1.5s infinite;
-  }
+  .btn {
+    margin-top:10px;          /* slightly smaller spacing */
+    padding:8px 16px;         /* smaller padding */
+    border:none;
+    border-radius:999px;
+    background: linear-gradient(135deg, #ff6fae, #9b5de5);
+    color:white;
+    font-size:0.85rem;        /* smaller font */
+    cursor:pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow:0 6px 15px rgba(0,0,0,0.2);
+}
+
+.card .letterbtn {
+  margin-top:15px;
+  padding:12px 22px;
+  border:none;
+  border-radius:12px;
+  background: linear-gradient(145deg, #f9e6c8, #f2d9a1); /* parchment base */
+  color:#6b3e00; /* warm brown text */
+  font-size:1rem;
+  cursor:pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1), inset 0 -2px 0 rgba(255,255,255,0.3);
+  transition: all 0.3s ease;
+  font-family: 'Georgia', 'Palatino Linotype', serif;
+  position: relative;
+}
+
+.card .letterbtn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,111,174,0.4) 0%, transparent 70%);
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.card .letterbtn:hover {
+  background: linear-gradient(145deg, #f2d9a1, #f9e6c8);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15), inset 0 -2px 0 rgba(255,255,255,0.4);
+  transform: translateY(-2px);
+}
+
+.card .letterbtn:active::after {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
   @keyframes pulseGlow {
     0% { box-shadow: 0 0 8px #ff6fae, 0 0 12px #ff6fae50; transform: scale(1); }
     50% { box-shadow: 0 0 16px #ff6fae, 0 0 24px #ff6fae70; transform: scale(1.05); }
@@ -113,13 +205,14 @@
 <body>
 
 <header>
-  <h1>Hey Love <span class="bounce">💖</span></h1>
-  <p>Before you read anything else… answer this first 💌</p>
+  <h1>Hey My Dino <span class="bounce">🦕</span></h1>
+  
 </header>
 
 <!-- Interactive question -->
 <section class="container">
   <div class="card question-card" style="grid-column:1/-1; text-align:center; padding:60px; position:relative;">
+    <p>Before you read anything else… answer this first 💌</p>
     <p style="font-size:1.2rem; font-weight:600; margin-bottom:20px;">Will you always be mine? 💖</p>
     <button class="btn yes-btn magical-btn">Yes</button>
     <button class="btn no-btn">No</button>
@@ -135,7 +228,12 @@
   <div class="card" style="grid-column:1/-1;">
     <h2>Happy 22nd Birthday, My Love 🎂💖</h2>
     <p>This one is special. Take your time reading it.</p>
-    <button class="btn" onclick="toggleMsg(this)">Open Letter</button>
+    <button class="letterbtn" 
+        onclick="toggleMsg(this)" 
+        data-open-text="Open Letter" 
+        data-close-text="Close Letter">
+  Open Letter
+</button>
     <div class="hidden-msg letter" style="margin-top:10px;">
       <p>Happy 22nd birthday, my love.</p>
       <p>I just want you to know how incredibly grateful I am to have you in my life. From the quiet moments to the loud, joyful ones, every second spent with you means more to me than I can ever fully explain. You are not just someone I love—you are someone I feel safe with, someone I trust, and someone I choose every single day.</p>
@@ -146,7 +244,7 @@
       <p>Every morning, I wake up thinking about the little things you do that make life brighter. Your smile, your laugh, your caring heart—they all remind me how lucky I am to have you. Even when we are apart, your presence lingers in my mind and comforts me in ways words cannot describe.</p>
       <p>Through challenges and changes, you have shown resilience, compassion, and courage. I hope this birthday reminds you that every step you take is celebrated, every effort you make is noticed, and every moment you cherish is shared with me in spirit.</p>
       <p>My wish for you today is simple yet profound: to feel loved in every heartbeat, to find joy in every moment, and to be reminded that you are treasured beyond measure. You are the melody to my heart, the warmth to my soul, and the love of my life.</p>
-      <p style="margin-top:20px;"><strong>With all my love,</strong><br/>Your always, Jane 🤍</p>
+      <p style="margin-top:20px;"><strong>With all my love,</strong><br/>Your wife, Jane 🤍</p>
     </div>
   </div>
 
@@ -212,10 +310,18 @@
 
 <script>
   // Toggle messages
-  function toggleMsg(btn){
-    const msg=btn.nextElementSibling;
-    msg.classList.toggle('show');
+function toggleMsg(btn) {
+  const msg = btn.nextElementSibling;
+  msg.classList.toggle('show');
+
+  // Show correct text depending on whether the message is visible
+  if(msg.classList.contains('show')) {
+    btn.textContent = btn.getAttribute('data-close-text') || "Close Letter";
+  } else {
+    btn.textContent = btn.getAttribute('data-open-text') || "Open Letter";
   }
+}
+
 
   // Toggle video
   function toggleVideo(btn){
