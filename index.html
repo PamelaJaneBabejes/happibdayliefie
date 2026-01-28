@@ -30,8 +30,28 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative; overflow:hidden;
   }
-  .card:hover { transform:translateY(-8px) scale(1.02); box-shadow:0 20px 35px rgba(0,0,0,0.18); }
+  .card:hover {
+  box-shadow:
+    0 25px 40px rgba(0,0,0,0.2),
+    0 0 0 2px rgba(255, 150, 216, 0.4);
+}
+
+  .card:has(audio):hover {
+  transform: none;
+}
+.card.no-transform:hover {
+  transform: none;
+}
   .card h2 { margin-top:0; font-size:clamp(1.2rem,4vw,1.5rem); }
+
+  .card {
+  will-change: transform;
+}
+
+.card audio {
+  transform: translateZ(0);
+}
+
 
   .btn, .tab-btn, .letterbtn {
     margin-top:10px;
@@ -191,13 +211,17 @@
 }
 
 
-
-
-
-
   footer { text-align:center; padding:40px 20px 60px; font-size:0.95rem; opacity:0.85; }
 
-  .heart { position: fixed; bottom: -20px; font-size: 20px; animation: floatUp 8s linear infinite; opacity: 0.7; }
+  .heart {
+  position: fixed;
+  bottom: -20px;
+  font-size: 20px;
+  animation: floatUp 8s linear infinite;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
   @keyframes floatUp { 0% { transform: translateY(0) scale(1); opacity: 0; } 10% { opacity: 0.7; } 100% { transform: translateY(-110vh) scale(1.5); opacity: 0; } }
 
   @media (max-width:800px){ .card { padding:30px 20px; min-height:180px; } }
@@ -254,9 +278,9 @@
   <!-- GALLERY TAB -->
   <div id="gallery" class="tab-content">
     <div class="card" style="grid-column:1/-1; display:flex; flex-direction:column; align-items:center;">
-      <h2>A Little Video for You 🎥💞</h2>
-      <p>I wanted you to see this too.</p>
-      <button class="btn" onclick="toggleVideo(this)">Play / Hide Video</button>
+      <h2>My pretty boy💞</h2>
+      <p>I borrowed your dad's vid, hope he don't mind. HEHEHEHE.</p>
+      <button class="btn" onclick="toggleVideo(this)">Click me 🎥</button>
       <div style="margin-top:15px; width:100%; max-width:420px;">
         <video id="loveVideo" controls playsinline style="width:100%; aspect-ratio:9/16; object-fit:cover; border-radius:20px; box-shadow:0 10px 25px rgba(0,0,0,0.15); display:none;">
           <source src="vid.mp4" type="video/mp4">
@@ -300,7 +324,7 @@
       <li>😂 Your laugh</li>
       <li>🤍 The way you care</li>
       <li>🌙 Quiet moments together</li>
-      <li>💬 Understanding each other without trying</li>
+      <li>💬 Understanding each other despite anything and everything</li>
       <li>🥰 Making ordinary days special</li>
       <li>✨ Small smiles we share</li>
       <li>🎶 Songs that remind me of you</li>
@@ -314,16 +338,16 @@
       <li>💭 Inside jokes</li>
       <li>🕰️ Losing track of time</li>
       <li>💌 Small moments that mean everything</li>
-      <li>🌃 Late-night thoughts</li>
+      <li>🌃 Late-night bonding</li>
       <li>🫂 Feeling safe with you</li>
-      <li>📸 Memories I replay</li>
+      <li>📸 Our games</li>
       <li>💫 The way you inspire me</li>
       <li>🌊 Peaceful moments</li>
-      <li>🥹 Heart-full memories</li>
+      <li>🥹 I think you what else</li>
       <li>🔥 The spark between us</li>
-      <li>🌼 Your patience</li>
+      <li>🌼 Your patience teaching me</li>
       <li>🧡 The warmth you bring</li>
-      <li>💬 Easy conversations</li>
+      <li>💬 When you teach me</li>
       <li>🌌 Dreaming together</li>
       <li>🎧 Music moments</li>
       <li>🤝 Being a team</li>
@@ -375,38 +399,86 @@
 
   <!-- MUSIC TAB -->
 <!-- MUSIC TAB -->
+ 
 <div id="music" class="tab-content">
   <div class="card" style="text-align:center; padding:20px;">
     <h2>Music 🎵</h2>
     <p style="font-style:italic; margin-bottom:20px;">These songs remind me of you ❤️</p>
 
     <!-- Pretty Boy — The Neighbourhood -->
-    <div class="spotify-embed" style="margin-bottom:20px;">
+    <div class="mp3-embed" style="margin-bottom:20px;">
       <h3>Pretty Boy — The Neighbourhood</h3>
-      <iframe src="https://open.spotify.com/track/7IL8PSVwLOJxqYne6azxQv?si=5e4f4ad2c63a4385" 
-        width="100%" height="80" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>
+      <audio controls>
+        <source src="mp3/prettyboy.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
     </div>
 
     <!-- Numb Little Bug — Em Beihold -->
-    <div class="spotify-embed" style="margin-bottom:20px;">
+    <div class="mp3-embed" style="margin-bottom:20px;">
       <h3>Numb Little Bug — Em Beihold</h3>
-      <iframe src="https://open.spotify.com/track/3o9kpgkIcffx0iSwxhuNI2?si=2876c3347c234409" 
-        width="100%" height="80" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>
+      <audio controls>
+        <source src="mp3/numblittlebug.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
     </div>
 
     <!-- Love — Wave to Earth -->
-    <div class="spotify-embed" style="margin-bottom:20px;">
+    <div class="mp3-embed" style="margin-bottom:20px;">
       <h3>Love — Wave to Earth</h3>
-      <iframe src="https://open.spotify.com/track/5mtTAScDytxMMqZj14NmlN?si=39ff3f5b9f5e4ac3" 
-        width="100%" height="80" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>
+      <audio controls>
+        <source src="mp3/lovewavetoearth.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
     </div>
 
     <!-- My Love Mine All Mine — Mitski -->
-    <div class="spotify-embed" style="margin-bottom:20px;">
-      <h3>My Love — Mitski</h3>
-      <iframe src="https://open.spotify.com/track/3vkCueOmm7xQDoJ17W1Pm3?si=011dcf0853e74a2a" 
-        width="100%" height="80" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>
+    <div class="mp3-embed" style="margin-bottom:20px;">
+      <h3>My Love Mine All Mine— Mitski</h3>
+      <audio controls>
+        <source src="mp3/mylovemitski.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
     </div>
+
+    <!-- Don’t You Cry — Jinji -->
+    <div class="mp3-embed" style="margin-bottom:20px;">
+      <h3>Don’t You Cry — Sunset Roller Coaster</h3>
+      <audio controls>
+        <source src="mp3/dontyoucry.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+
+    <!-- Mr. Taliban -->
+    <div class="mp3-embed" style="margin-bottom:20px;">
+      <h3>Mr. Taliban</h3>
+      <audio controls>
+        <source src="mp3/mrtaliban.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+
+    <!-- Ra Costelleo -->
+    <div class="mp3-embed" style="margin-bottom:20px;">
+      <h3>Open Road - Ra Costelloe</h3>
+      <audio controls>
+        <source src="mp3/openroad.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+
+    <!-- Enormous P -->
+    <div class="mp3-embed" style="margin-bottom:20px;">
+      <h3>Enormous Totie Kop (HAHAHAHAHA)</h3>
+      <audio controls>
+        <source src="mp3/totiekop.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+
+  </div>
+</div>
 
   
 
@@ -424,6 +496,14 @@
 </footer>
 
 <script>
+
+  function openTab(id) {
+  document.querySelectorAll('.tab-content').forEach(tab => {
+    tab.classList.remove('active');
+  });
+  document.getElementById(id).classList.add('active');
+}
+
 function toggleMsg(btn) {
   const msg = btn.nextElementSibling;
   msg.classList.toggle('show');
