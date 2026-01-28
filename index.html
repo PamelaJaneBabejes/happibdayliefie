@@ -7,7 +7,7 @@
 <style>
   * { box-sizing: border-box; margin:0; padding:0; }
   body {
-    font-family: 'Poppins', 'Segoe UI', sans-serif;
+    font-family:  'Baloo 2', cursive; /* cute font */
     background: linear-gradient(135deg, #ffd6e8, #e0c3ff);
     min-height: 100vh;
     overflow-x: hidden;
@@ -20,37 +20,44 @@
   .bounce { display:inline-block; animation:bounce 1.5s infinite; }
   @keyframes bounce { 0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);} }
 
-  .container { max-width:1000px; margin:auto; padding:20px; display:grid; gap:24px; }
-  .card {
-    background: rgba(255,255,255,0.85);
-    border-radius: 20px;
-    padding:25px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
-    text-align:center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative; overflow:hidden;
-  }
-  .card:hover {
+  /* Container already exists, no changes needed */
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+  display: grid;
+  gap: 24px;
+}
+
+/* Base card styles (improved for cuteness & sparkle) */
+.card {
+  background: rgba(255, 240, 255, 0.9); /* more pastel */
+  border-radius: 30px; /* rounder */
+  padding: 40px;
+  box-shadow: 0 10px 25px rgba(255,105,180,0.2); /* pinkish shadow */
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Baloo 2', cursive; /* cute font */
+}
+
+/* Card hover sparkle/glow effect */
+.card:hover {
   box-shadow:
-    0 25px 40px rgba(0,0,0,0.2),
-    0 0 0 2px rgba(255, 150, 216, 0.4);
+    0 25px 40px rgba(255, 105, 180, 0.4),
+    0 0 0 2px rgba(255, 182, 193, 0.5);
+  transform: translateY(-5px);
 }
 
-  .card:has(audio):hover {
-  transform: none;
-}
-.card.no-transform:hover {
-  transform: none;
-}
-  .card h2 { margin-top:0; font-size:clamp(1.2rem,4vw,1.5rem); }
-
-  .card {
-  will-change: transform;
+/* Card content adjustments */
+.card h2 {
+  margin-top: 0;
+  font-size: clamp(1.2rem, 4vw, 1.5rem);
+  color: #ff4da6;
 }
 
-.card audio {
-  transform: translateZ(0);
-}
+
 
 
   .btn, .tab-btn, .letterbtn {
@@ -96,48 +103,78 @@
   .letter::-webkit-scrollbar-thumb { background:#d48cff; border-radius:10px; }
   .letter::-webkit-scrollbar-track { background:transparent; }
 
+  /* Tab container */
   .tab-container {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
-}
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 20px auto;
+    max-width: 600px;
+    background: #f3e7ff; /* soft lavender background */
+    border-radius: 50px;
+    padding: 5px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
 
-.tab-btn {
-  padding: 10px 20px;
-  border-radius: 20px;
-  background: #ffd6e8; /* soft pink */
-  color: #4a235a;
-  font-weight: 600;
-  cursor: pointer;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
-  border: none;
-  font-size: 0.9rem;
-}
+  /* Tab buttons */
+  .tab-btn {
+    flex: 1;
+    padding: 10px 20px;
+    border-radius: 50px;
+    background: #ffd6e8; /* soft pink */
+    color: #4a235a;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    font-size: 0.95rem;
+    position: relative;
+    z-index: 1;
+  }
 
-.tab-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-  background: #ffb6d2; /* slightly brighter on hover */
-}
+  /* Hover effect */
+  .tab-btn:hover {
+    background: #ffb6d2;
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  }
 
-.tab-btn.active {
-  background: #ff9ed8; /* highlight selected tab */
-  color: white;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-  transform: translateY(-2px) scale(1.05);
-}
+  /* Active tab styling */
+  .tab-btn.active {
+    background: linear-gradient(135deg, #ff9ed8, #e0c3ff);
+    color: white;
+    font-weight: 700;
+    transform: scale(1.1);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  }
 
-.tab-content {
-  display: none; /* hide all tabs by default */
-}
+  /* Optional: small underline for active tab */
+  .tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 20%;
+    width: 60%;
+    height: 4px;
+    background: white;
+    border-radius: 2px;
+  }
 
-.tab-content.active {
-  display: block; /* show only the active tab */
-}
+  /* Tab content */
+  .tab-content {
+    display: none;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 15px;
+    border-radius: 15px;
+    background: #fff5ff;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+  }
 
+  .tab-content.active {
+    display: block;
+  }
 /* Smaller buttons */
 .btn {
   padding: 8px 18px;
@@ -149,24 +186,36 @@
   transition: all 0.25s ease;
 }
 
-/* YES — alluring & tempting */
+/* YES — alluring & dramatic */
 .yes-btn {
   background: linear-gradient(135deg, #ff5fa2, #ff1a75);
   color: white;
   font-weight: 700;
-  box-shadow: 0 0 12px rgba(255, 26, 117, 0.6);
-  animation: pulse 1.6s infinite;
+  box-shadow: 0 0 15px rgba(255, 26, 117, 0.6), 0 0 30px rgba(255, 90, 180, 0.4);
+  animation: pulse 1.5s infinite, glow 3s infinite alternate;
+  border: none;
+  border-radius: 50px;
+  padding: 14px 40px;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s ease;
 }
 
 .yes-btn:hover {
-  transform: scale(1.15);
-  box-shadow: 0 0 25px rgba(255, 26, 117, 0.9);
+  transform: scale(1.2) rotate(-2deg);
+  box-shadow: 0 0 35px rgba(255, 26, 117, 1), 0 0 70px rgba(255, 90, 180, 0.7);
 }
 
 /* NO — plain & shy */
 .no-btn {
   background: #ddd;
   color: #555;
+  border: none;
+  border-radius: 50px;
+  padding: 14px 40px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
 }
 
 .no-btn:hover {
@@ -174,19 +223,27 @@
   transform: scale(1.05);
 }
 
-/* Pulse animation for YES */
+/* Pulse animation for YES button */
 @keyframes pulse {
-  0% { box-shadow: 0 0 10px rgba(255, 26, 117, 0.5); }
-  50% { box-shadow: 0 0 22px rgba(255, 26, 117, 0.9); }
-  100% { box-shadow: 0 0 10px rgba(255, 26, 117, 0.5); }
+  0% { box-shadow: 0 0 15px rgba(255, 26, 117, 0.5), 0 0 30px rgba(255, 90, 180, 0.3); }
+  50% { box-shadow: 0 0 35px rgba(255, 26, 117, 0.9), 0 0 70px rgba(255, 90, 180, 0.6); }
+  100% { box-shadow: 0 0 15px rgba(255, 26, 117, 0.5), 0 0 30px rgba(255, 90, 180, 0.3); }
 }
 
-/* Emoji burst */
+/* Extra glow effect */
+@keyframes glow {
+  0% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.05) rotate(1deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+/* Emoji / heart burst when YES clicked */
 .emoji {
   position: absolute;
   font-size: 1.5rem;
   animation: burst 1s ease-out forwards;
   pointer-events: none;
+  z-index: 10;
 }
 
 @keyframes burst {
@@ -195,10 +252,30 @@
     opacity: 1;
   }
   100% {
-    transform: translate(var(--x), var(--y)) scale(0.3);
+    transform: translate(var(--x), var(--y)) scale(0.3) rotate(20deg);
     opacity: 0;
   }
 }
+
+/* Sparkles around YES button */
+.sparkle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: rgb(209, 31, 31);
+  border-radius: 50%;
+  opacity: 0;
+  box-shadow: 0 0 8px white, 0 0 12px #ff5fa2;
+  animation: sparkle-drift 2.5s linear infinite;
+}
+
+@keyframes sparkle-drift {
+  0% { opacity: 0; transform: translate(0,0) scale(0.5); }
+  10% { opacity: 1; }
+  50% { transform: translate(var(--x), var(--y)) scale(1.2); opacity: 1; }
+  100% { transform: translate(var(--x2), var(--y2)) scale(0.5); opacity: 0; }
+}
+
 
 .song {
   margin: 15px 0;
@@ -275,20 +352,35 @@
     </div>
   </div>
 
-  <!-- GALLERY TAB -->
-  <div id="gallery" class="tab-content">
-    <div class="card" style="grid-column:1/-1; display:flex; flex-direction:column; align-items:center;">
-      <h2>My pretty boy💞</h2>
-      <p>I borrowed your dad's vid, hope he don't mind. HEHEHEHE.</p>
-      <button class="btn" onclick="toggleVideo(this)">Click me 🎥</button>
-      <div style="margin-top:15px; width:100%; max-width:420px;">
-        <video id="loveVideo" controls playsinline style="width:100%; aspect-ratio:9/16; object-fit:cover; border-radius:20px; box-shadow:0 10px 25px rgba(0,0,0,0.15); display:none;">
-          <source src="vid.mp4" type="video/mp4">
-          Sorry, your browser does not support the video tag.
-        </video>
-      </div>
+<!-- GALLERY TAB -->
+<div id="gallery" class="tab-content">
+  <div class="card" style="grid-column:1/-1; display:flex; flex-direction:column; align-items:center; gap:20px;">
+    <h2>My pretty boy💞</h2>
+
+    <!-- Button for first video -->
+    <button class="btn" onclick="playVideo('loveVideo')">Click me 🎥</button>
+    <div style="margin-top:15px; width:100%; max-width:420px;">
+      <video id="loveVideo" controls playsinline style="width:100%; aspect-ratio:9/16; object-fit:cover; border-radius:20px; box-shadow:0 10px 25px rgba(0,0,0,0.15); display:none;">
+        <source src="vid.mp4" type="video/mp4">
+        Sorry, your browser does not support the video tag.
+      </video>
+    </div>
+
+    <!-- Button for second video -->
+    <button class="btn" onclick="playVideo('happiVideo', 'happiText')">Click me 2 🎥</button>
+
+<p id="happiText" style="margin-top:10px; font-style:italic; text-align:center; opacity:0; transition: opacity 0.8s;">
+  I borrowed your dad's video, hehehe.
+</p>
+
+    <div style="margin-top:15px; width:100%; max-width:420px;">
+      <video id="happiVideo" controls playsinline style="width:100%; aspect-ratio:9/16; object-fit:cover; border-radius:20px; box-shadow:0 10px 25px rgba(0,0,0,0.15); display:none;">
+        <source src="happi.mp4" type="video/mp4">
+        Sorry, your browser does not support the video tag.
+      </video>
     </div>
   </div>
+</div>
 
   <!-- NOTES TAB -->
   <div id="notes" class="tab-content">
@@ -409,7 +501,7 @@
     <div class="mp3-embed" style="margin-bottom:20px;">
       <h3>Pretty Boy — The Neighbourhood</h3>
       <audio controls>
-        <source src="mp3/prettyboy.mp3" type="audio/mpeg">
+        <source src="prettyboy.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
       </audio>
     </div>
@@ -418,7 +510,7 @@
     <div class="mp3-embed" style="margin-bottom:20px;">
       <h3>Numb Little Bug — Em Beihold</h3>
       <audio controls>
-        <source src="mp3/numblittlebug.mp3" type="audio/mpeg">
+        <source src="numblittlebug.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
       </audio>
     </div>
@@ -427,7 +519,7 @@
     <div class="mp3-embed" style="margin-bottom:20px;">
       <h3>Love — Wave to Earth</h3>
       <audio controls>
-        <source src="mp3/lovewavetoearth.mp3" type="audio/mpeg">
+        <source src="lovewavetoearth.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
       </audio>
     </div>
@@ -436,7 +528,7 @@
     <div class="mp3-embed" style="margin-bottom:20px;">
       <h3>My Love Mine All Mine— Mitski</h3>
       <audio controls>
-        <source src="mp3/mylovemitski.mp3" type="audio/mpeg">
+        <source src="mylovemitski.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
       </audio>
     </div>
@@ -445,7 +537,7 @@
     <div class="mp3-embed" style="margin-bottom:20px;">
       <h3>Don’t You Cry — Sunset Roller Coaster</h3>
       <audio controls>
-        <source src="mp3/dontyoucry.mp3" type="audio/mpeg">
+        <source src="dontyoucry.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
       </audio>
     </div>
@@ -454,7 +546,7 @@
     <div class="mp3-embed" style="margin-bottom:20px;">
       <h3>Mr. Taliban</h3>
       <audio controls>
-        <source src="mp3/mrtaliban.mp3" type="audio/mpeg">
+        <source src="mrtaliban.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
       </audio>
     </div>
@@ -463,7 +555,7 @@
     <div class="mp3-embed" style="margin-bottom:20px;">
       <h3>Open Road - Ra Costelloe</h3>
       <audio controls>
-        <source src="mp3/openroad.mp3" type="audio/mpeg">
+        <source src="openroad.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
       </audio>
     </div>
@@ -472,7 +564,7 @@
     <div class="mp3-embed" style="margin-bottom:20px;">
       <h3>Enormous Totie Kop (HAHAHAHAHA)</h3>
       <audio controls>
-        <source src="mp3/totiekop.mp3" type="audio/mpeg">
+        <source src="totiekop.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
       </audio>
     </div>
@@ -497,12 +589,109 @@
 
 <script>
 
+    // --- TAB SWITCHING LOGIC ---
+    
+  const allTabButtons = document.querySelectorAll('.tab-btn');
+  const allTabContents = document.querySelectorAll('.tab-content');
+  
+  
+
+  allTabButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Remove active class from all buttons
+      allTabButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const targetTab = btn.getAttribute('data-tab');
+
+      // Hide all tabs
+      allTabContents.forEach(tab => tab.style.display = 'none');
+
+      // Show selected tab
+      document.getElementById(targetTab).style.display = 'block';
+
+      // Pause all media when switching tabs
+      pauseAllMedia();
+    });
+  });
+
+  // --- MEDIA LOGIC ---
+  const galleryVideos = [document.getElementById('loveVideo'), document.getElementById('happiVideo')];
+  const musicAudios = Array.from(document.querySelectorAll('#music audio'));
+  let currentlyPlayingVideo = null;
+
+  function playVideo(id) {
+    galleryVideos.forEach(video => {
+      if (video.id === id) {
+        video.style.display = 'block';
+        video.play();
+        currentlyPlayingVideo = video;
+      } else {
+        video.pause();
+        video.style.display = 'none';
+      }
+    });
+  }
+
+  function toggleVideo(id) {
+    const video = document.getElementById(id);
+    if (!video) return;
+
+    if (video.style.display === 'none' || video.style.display === '') {
+      // Show and play the video
+      video.style.display = 'block';
+      video.play();
+    } else {
+      // Hide and pause the video
+      video.style.display = 'none';
+      video.pause();
+    }
+  }
+
+  function playVideo(videoId, textId) {
+  const video = document.getElementById(videoId);
+  const text = document.getElementById(textId);
+
+  // Show video and play it
+  video.style.display = 'block';
+  video.play();
+
+  // Fade in the paragraph
+  text.style.opacity = 0; // reset just in case
+  text.style.display = 'block';
+  setTimeout(() => {
+    text.style.opacity = 1;
+  }, 50); // slight delay triggers CSS transition
+}
+
+
+  function pauseAllMedia() {
+    // Pause videos
+    galleryVideos.forEach(video => video.pause());
+    // Pause audios
+    musicAudios.forEach(audio => audio.pause());
+  }
+  function pauseAllMedia() {
+    // Pause videos
+    galleryVideos.forEach(video => video.pause());
+    // Pause audios
+    musicAudios.forEach(audio => audio.pause());
+  }
+
+  window.addEventListener('focus', () => {
+    if (currentlyPlaying && currentlyPlaying._wasPlaying) {
+      currentlyPlaying.play();
+      currentlyPlaying._wasPlaying = false;
+    }
+  });
+
   function openTab(id) {
   document.querySelectorAll('.tab-content').forEach(tab => {
     tab.classList.remove('active');
   });
   document.getElementById(id).classList.add('active');
 }
+
 
 function toggleMsg(btn) {
   const msg = btn.nextElementSibling;
@@ -516,7 +705,6 @@ function toggleVideo(btn){
   if(video.style.display === 'block'){ video.pause(); video.style.display = 'none'; } 
   else { video.style.display = 'block'; video.play(); }
 }
-
 
 
 // Floating hearts
@@ -536,6 +724,9 @@ const yesBtn = document.querySelector('.yes-btn');
 const mainContent = document.querySelector('.main-content');
 const questionCard = document.querySelector('.question-card');
 const msgPopup = document.querySelector('.message-popup');
+const sparklesContainer = document.querySelector('.sparkles'); // make sure this div exists in HTML
+
+// NO messages
 const noMessages = [
   "NEE MAAAAAN!!!!!!! 😡😡😡😡",
   "WHO YOU TRYNA BE WITH THEN???!!!!!!! 😡😡😡😡",
@@ -548,17 +739,77 @@ const noMessages = [
   "Don't run from my love! 💔"
 ];
 let msgIndex = 0;
+
+// NO button behavior
 function handleNo() {
   msgPopup.textContent = noMessages[msgIndex];
   const parentRect = questionCard.getBoundingClientRect();
   const x = Math.random() * (parentRect.width - noBtn.offsetWidth);
   const y = Math.random() * (parentRect.height - noBtn.offsetHeight - 30);
-  noBtn.style.position = 'absolute'; noBtn.style.left = x + 'px'; noBtn.style.top = y + 'px';
+  noBtn.style.position = 'absolute'; 
+  noBtn.style.left = x + 'px'; 
+  noBtn.style.top = y + 'px';
   msgIndex = (msgIndex + 1) % noMessages.length;
 }
-noBtn.addEventListener('click', handleNo); noBtn.addEventListener('touchstart', handleNo);
+noBtn.addEventListener('click', handleNo);
+noBtn.addEventListener('touchstart', handleNo);
 
-yesBtn.addEventListener('click', () => { mainContent.style.display='block'; questionCard.style.display='none'; });
+// Helper to create a sparkle
+function createSparkle(x, y) {
+  const sparkle = document.createElement('div');
+  sparkle.classList.add('sparkle');
+  sparkle.style.left = x + 'px';
+  sparkle.style.top = y + 'px';
+  sparkle.style.setProperty('--x', (Math.random()*200-100)+'px');
+  sparkle.style.setProperty('--y', (Math.random()*200-100)+'px');
+  sparkle.style.setProperty('--x2', (Math.random()*200-100)+'px');
+  sparkle.style.setProperty('--y2', (Math.random()*200-100)+'px');
+  sparklesContainer.appendChild(sparkle);
+  setTimeout(() => sparkle.remove(), 2500);
+}
+
+// Helper to create heart/emoji bursts
+function createEmoji(x, y) {
+  const emoji = document.createElement('div');
+  emoji.classList.add('emoji');
+  emoji.style.left = x + 'px';
+  emoji.style.top = y + 'px';
+  emoji.style.setProperty('--x', (Math.random()*200-100)+'px');
+  emoji.style.setProperty('--y', (Math.random()*200-100)+'px');
+  emoji.textContent = "💖";
+  questionCard.appendChild(emoji);
+  setTimeout(() => emoji.remove(), 1000);
+}
+
+// YES button click behavior
+yesBtn.addEventListener('click', e => {
+  // Show dramatic popup
+  msgPopup.classList.add('show');
+  msgPopup.innerHTML = "Now you’re stuck with me forever 😈💖<br>MWAHAHAHAH";
+  yesBtn.disabled = true;
+  noBtn.style.display = 'none';
+
+  // Reveal main content after short delay for drama
+  setTimeout(() => {
+    mainContent.style.display = 'block';
+    questionCard.style.display = 'none';
+  }, 800);
+
+  // Create burst of sparkles and emojis
+  for (let i = 0; i < 25; i++) {
+    createSparkle(e.clientX - questionCard.getBoundingClientRect().left, 
+                  e.clientY - questionCard.getBoundingClientRect().top);
+    createEmoji(e.clientX - questionCard.getBoundingClientRect().left, 
+                e.clientY - questionCard.getBoundingClientRect().top);
+  }
+});
+
+// Continuous ambient sparkles on card
+setInterval(() => {
+  const rect = questionCard.getBoundingClientRect();
+  createSparkle(Math.random() * rect.width, Math.random() * rect.height);
+}, 400);
+
 
 const musicButtons = document.querySelectorAll('.music-btn');
 const audioPlayer = document.getElementById('audio-player');
@@ -570,6 +821,20 @@ musicButtons.forEach(btn => {
     audioPlayer.play();
   });
 });
+
+// Select all audio elements in the music tab
+  const audios = document.querySelectorAll('#music audio');
+
+  audios.forEach(audio => {
+    audio.addEventListener('play', () => {
+      // Pause all other audios
+      audios.forEach(otherAudio => {
+        if (otherAudio !== audio) {
+          otherAudio.pause();
+        }
+      });
+    });
+  });
 
 
 // Tabs
