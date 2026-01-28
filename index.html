@@ -371,7 +371,7 @@
       <p>Every morning, I wake up thinking about the little things you do that make life brighter. Your smile, your laugh, your caring heart—they all remind me how lucky I am to have you. Even when we are apart, your presence lingers in my mind and comforts me in ways words cannot describe.</p>
       <p>Through challenges and changes, you have shown resilience, compassion, and courage. I hope this birthday reminds you that every step you take is celebrated, every effort you make is noticed, and every moment you cherish is shared with me in spirit.</p>
       <p>My wish for you today is simple yet profound: to feel loved in every heartbeat, to find joy in every moment, and to be reminded that you are treasured beyond measure. You are the melody to my heart, the warmth to my soul, and the love of my life.</p>
-      <p style="margin-top:20px;"><strong>With all my love,</strong><br/> Jane 🤍</p>
+      <p style="margin-top:20px;"><strong>Yours forever,</strong><br/> Jane ♡</p>
       </div>
     </div>
   </div>
@@ -459,7 +459,7 @@
       <li>📸 Our games</li>
       <li>💫 The way you inspire me</li>
       <li>🌊 Peaceful moments</li>
-      <li>🥹 I think you what else</li>
+      <li>😈 I think you know what else</li>
       <li>🔥 The spark between us</li>
       <li>🌼 Your patience teaching me</li>
       <li>🧡 The warmth you bring</li>
@@ -639,80 +639,45 @@
     });
   });
 
-  // --- MEDIA LOGIC ---
-  const galleryVideos = [document.getElementById('loveVideo'), document.getElementById('happiVideo')];
-  const musicAudios = Array.from(document.querySelectorAll('#music audio'));
-  let currentlyPlayingVideo = null;
+ const galleryVideos = [document.getElementById('loveVideo'), document.getElementById('happiVideo')];
+const musicAudios = Array.from(document.querySelectorAll('#music audio'));
+let currentlyPlayingVideo = null;
 
-  function playVideo(id) {
-    galleryVideos.forEach(video => {
-      if (video.id === id) {
-        video.style.display = 'block';
-        video.play();
-        currentlyPlayingVideo = video;
-      } else {
-        video.pause();
-        video.style.display = 'none';
-      }
-    });
-  }
-
-  function toggleVideo(id) {
-    const video = document.getElementById(id);
-    if (!video) return;
-
-    if (video.style.display === 'none' || video.style.display === '') {
-      // Show and play the video
+function playVideo(videoId, textId) {
+  galleryVideos.forEach(video => {
+    const text = document.getElementById(textId);
+    if (video.id === videoId) {
+      // Show the clicked video
       video.style.display = 'block';
       video.play();
+      currentlyPlayingVideo = video;
+
+      // Fade in the paragraph if provided
+      if (text) {
+        text.style.opacity = 0; // reset
+        text.style.display = 'block';
+        setTimeout(() => {
+          text.style.opacity = 1;
+        }, 50);
+      }
     } else {
-      // Hide and pause the video
-      video.style.display = 'none';
+      // Hide all other videos
       video.pause();
-    }
-  }
-
-  function playVideo(videoId, textId) {
-  const video = document.getElementById(videoId);
-  const text = document.getElementById(textId);
-
-  // Show video and play it
-  video.style.display = 'block';
-  video.play();
-
-  // Fade in the paragraph
-  text.style.opacity = 0; // reset just in case
-  text.style.display = 'block';
-  setTimeout(() => {
-    text.style.opacity = 1;
-  }, 50); // slight delay triggers CSS transition
-}
-
-
-  function pauseAllMedia() {
-    // Pause videos
-    galleryVideos.forEach(video => video.pause());
-    // Pause audios
-    musicAudios.forEach(audio => audio.pause());
-  }
-  function pauseAllMedia() {
-    // Pause videos
-    galleryVideos.forEach(video => video.pause());
-    // Pause audios
-    musicAudios.forEach(audio => audio.pause());
-  }
-
-  window.addEventListener('focus', () => {
-    if (currentlyPlaying && currentlyPlaying._wasPlaying) {
-      currentlyPlaying.play();
-      currentlyPlaying._wasPlaying = false;
+      video.style.display = 'none';
+      // Also hide any associated <p> for other videos
+      const otherText = document.getElementById(video.id + 'Text'); // assuming <p> id = video id + "Text"
+      if (otherText) {
+        otherText.style.display = 'none';
+      }
     }
   });
+}
+
 
   function openTab(id) {
   document.querySelectorAll('.tab-content').forEach(tab => {
     tab.classList.remove('active');
-  });
+  });                 
   document.getElementById(id).classList.add('active');
 }
 
