@@ -104,77 +104,101 @@
   .letter::-webkit-scrollbar-track { background:transparent; }
 
   /* Tab container */
+.tab-container {
+  display: flex;
+  justify-content: center;
+  gap: 8px; /* smaller gap for mobile */
+  margin: 20px auto;
+  max-width: 100%; /* full width on small screens */
+  background: #f3e7ff; /* soft lavender */
+  border-radius: 50px;
+  padding: 5px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  flex-wrap: wrap; /* allow wrapping on small screens */
+}
+
+/* Tab buttons */
+.tab-btn {
+  flex: 1 1 auto; /* allow shrinking */
+  min-width: 100px; /* ensures buttons don’t get too small */
+  padding: 10px 15px;
+  border-radius: 50px;
+  background: #ffd6e8; /* soft pink */
+  color: #4a235a;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  font-size: 0.9rem;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  white-space: nowrap; /* prevent text wrapping */
+}
+
+/* Hover effect */
+.tab-btn:hover {
+  background: #ffb6d2;
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* Active tab styling */
+.tab-btn.active {
+  background: linear-gradient(135deg, #ff9ed8, #e0c3ff);
+  color: white;
+  font-weight: 700;
+  transform: scale(1.1);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* Optional: small underline for active tab */
+.tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 20%;
+  width: 60%;
+  height: 4px;
+  background: white;
+  border-radius: 2px;
+}
+
+/* Tab content */
+.tab-content {
+  display: none;
+  width: 100%; /* full width */
+  margin: 10px auto 0;
+  padding: 15px;
+  border-radius: 15px;
+  background: #fff5ff;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* Responsive tweaks */
+@media (max-width: 480px) {
   .tab-container {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin: 20px auto;
-    max-width: 600px;
-    background: #f3e7ff; /* soft lavender background */
-    border-radius: 50px;
-    padding: 5px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    gap: 6px;
+    padding: 4px;
   }
 
-  /* Tab buttons */
   .tab-btn {
-    flex: 1;
-    padding: 10px 20px;
-    border-radius: 50px;
-    background: #ffd6e8; /* soft pink */
-    color: #4a235a;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: none;
-    font-size: 0.95rem;
-    position: relative;
-    z-index: 1;
+    font-size: 0.85rem;
+    padding: 8px 12px;
+    min-width: 80px;
   }
 
-  /* Hover effect */
-  .tab-btn:hover {
-    background: #ffb6d2;
-    transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-  }
-
-  /* Active tab styling */
-  .tab-btn.active {
-    background: linear-gradient(135deg, #ff9ed8, #e0c3ff);
-    color: white;
-    font-weight: 700;
-    transform: scale(1.1);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-  }
-
-  /* Optional: small underline for active tab */
   .tab-btn.active::after {
-    content: '';
-    position: absolute;
-    bottom: -6px;
-    left: 20%;
-    width: 60%;
-    height: 4px;
-    background: white;
-    border-radius: 2px;
+    bottom: -4px;
+    height: 3px;
   }
+}
 
-  /* Tab content */
-  .tab-content {
-    display: none;
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 15px;
-    border-radius: 15px;
-    background: #fff5ff;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-    transition: all 0.3s ease;
-  }
-
-  .tab-content.active {
-    display: block;
-  }
 /* Smaller buttons */
 .btn {
   padding: 8px 18px;
