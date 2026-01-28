@@ -305,6 +305,21 @@
   color: #4a235a;
 }
 
+/* Make the audio player smaller and fit nicely */
+.mp3-embed audio {
+  width: 100%;        /* full width of container */
+  max-width: 300px;   /* optional max width for desktop */
+  height: 30px;       /* smaller than default height */
+}
+
+/* Optional: make the player even more compact on mobile */
+@media (max-width: 480px) {
+  .mp3-embed audio {
+    height: 25px;     /* slightly smaller for mobile */
+  }
+}
+
+
 
   footer { text-align:center; padding:40px 20px 60px; font-size:0.95rem; opacity:0.85; }
 
